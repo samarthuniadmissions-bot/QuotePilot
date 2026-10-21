@@ -35,6 +35,10 @@ The UI currently does not claim that uploaded files were analyzed by a live AI s
 
 No API keys are required for the demo and no uploaded document is sent to an external service by this prototype.
 
+## Demo trial policy
+
+The local demo keeps a small browser-side trial ledger keyed by normalized email address. One email can create one demo workspace; a repeat attempt is sent to the pricing page. This is useful for evaluating the workflow, but it is not a security boundary because browser storage can be cleared. Production enforcement should move the ledger to a server-side `trial_entitlements` table keyed by verified user ID/email, with authentication and rate limiting.
+
 ## Data model
 
 `db/schema.sql` contains the suggested workspace, analysis, supplier, quotation item, finding, and correction tables. Keep uploaded files private and scope every query to a workspace membership.
